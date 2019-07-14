@@ -1,0 +1,815 @@
+### Athena Nebula systems
+### THIS IS THE HARDEST THING EVER! ,_,
+
+@distance = 50
+@planet_min_size = 10
+@planet_max_size = 25
+@base_moon_distance = 10
+@moon_min_size = 6
+@moon_max_size = 10
+
+mec_asr_system_initializer = {
+	name = "Parnitha"
+	
+	class = "sc_f"
+	asteroid_belt = {
+		type = rocky_asteroid_belt
+		radius = 160
+	}
+	flags = { empire_home_system mec_asari_parnitha_system custom_system }
+	
+	usage = custom_empire
+	
+	init_effect = {
+		every_neighbor_system = {
+			set_star_flag = empire_cluster
+			every_neighbor_system = {
+				set_star_flag = empire_cluster
+			}
+		}
+		
+		if = {
+			limit = {
+				NOT = { exists = event_target:mec_asari_parnitha_system }
+			}
+			save_global_event_target_as = mec_asari_parnitha_system
+		}
+	}
+	
+	planet = {
+		name = "Parnitha"
+		class = "pc_f_star"
+		orbit_distance = 0
+		orbit_angle = 1
+		size = 26
+		has_ring = no
+		
+		init_effect = {
+			prevent_anomaly = yes
+			clear_deposits = yes
+			set_deposit = d_energy_5
+			set_planet_flag = starting_deposit
+			set_planet_flag = starting_mining_target
+		}
+	}
+	
+	planet = {
+		name = "Kurinth"
+		class = "pc_toxic"
+		orbit_distance = 50
+		orbit_angle = 15
+		size = 9
+		has_ring = no
+		entity = "asari_01_planet_molten_kurinth"
+		
+		init_effect = {
+			prevent_anomaly = yes
+			clear_deposits = yes
+			set_deposit = d_physics_3
+			set_planet_flag = starting_deposit
+			set_planet_flag = starting_research_target
+		}
+	}
+	
+	planet = {
+		name = "Thessia"
+		class = "pc_continental"
+		orbit_distance = 40
+		orbit_angle = 80
+		size = 16
+		starting_planet = yes
+		has_ring = no
+		modifiers = none
+		flags = { mec_asari_planet_thessia }
+		entity = "asari_01_planet_habitable_thessia"
+		
+		init_effect = {
+			prevent_anomaly = yes
+			
+			if = {
+				limit = {
+					NOT = { exists = event_target:mec_asari_planet_thessia }
+				}
+				save_global_event_target_as = mec_asari_planet_thessia
+			}
+		}
+	}
+	
+	planet = {
+		name = "Piares"
+		class = "pc_barren"
+		orbit_distance = 45
+		orbit_angle = 70
+		size = 14
+		has_ring = no
+		entity = "asari_01_planet_barren_piares"
+		
+		init_effect = {
+			prevent_anomaly = yes
+			clear_deposits = yes
+			set_deposit = d_minerals_5
+			set_planet_flag = starting_deposit
+			set_planet_flag = starting_mining_target
+		}
+	}
+	
+	change_orbit = 25
+	
+	planet = {
+		count = 4
+		class = "pc_asteroid"
+		orbit_distance = 0
+		orbit_angle = { min = 40 max = 100 }
+		
+		init_effect = {
+			prevent_anomaly = yes
+			clear_deposits = yes
+		}
+	}
+	
+	planet = {
+		class = "pc_asteroid"
+		orbit_distance = 0
+		orbit_angle = { min = 40 max = 100 }
+		
+		init_effect = {
+			prevent_anomaly = yes
+			clear_deposits = yes
+		}
+	}
+	
+	planet = {
+		name = "Lucen"
+		class = "pc_asteroid"
+		orbit_distance = 0
+		orbit_angle = { min = 40 max = 100 }
+		
+		init_effect = {
+			prevent_anomaly = yes
+			clear_deposits = yes
+			set_deposit = d_minerals_5
+			set_planet_flag = starting_deposit
+			set_planet_flag = starting_mining_target
+		}
+	}
+	
+	planet = {
+		name = "Janiri"
+		class = "pc_gas_giant"
+		orbit_distance = 25
+		orbit_angle = -60
+		size = 30
+		has_ring = no
+		entity = "asari_01_planet_gas_giant_janiri"
+		
+		init_effect = {
+			prevent_anomaly = yes
+			clear_deposits = yes
+			set_deposit = d_engineering_2
+			set_planet_flag = starting_deposit
+		}
+	}
+	
+	planet = {
+		name = "Athame"
+		class = "pc_gas_giant"
+		orbit_distance = 55
+		orbit_angle = -100
+		size = 35
+		has_ring = yes
+		entity = "asari_01_planet_gas_giant_athame"
+		
+		init_effect = {
+			prevent_anomaly = yes
+			clear_deposits = yes
+			set_deposit = d_energy_5
+			set_planet_flag = starting_mining_target
+			set_planet_flag = starting_deposit
+		}
+	}
+	
+	planet = {
+		name = "Tevura"
+		class = "pc_gas_giant"
+		orbit_distance = 45
+		orbit_angle = -170
+		size = 25
+		has_ring = no
+		entity = "asari_01_planet_gas_giant_tevura"
+		
+		init_effect = {
+			clear_deposits = yes
+			prevent_anomaly = yes
+		}
+		
+		moon = {
+			name = "Tevura I"
+			count = 1
+			class = random_non_colonizable
+			orbit_angle = { min = 90 max = 270 }
+			orbit_distance = 13
+			
+			init_effect = {
+				prevent_anomaly = yes
+				clear_deposits = yes
+			}
+		}
+		
+		moon = {
+			name = "Tevura II"
+			count = 1
+			class = random_non_colonizable
+			orbit_angle = { min = 90 max = 270 }
+			orbit_distance = 0
+			
+			init_effect = {
+				prevent_anomaly = yes
+				clear_deposits = yes
+			}
+		}
+		
+		moon = {
+			name = "Tevura III"
+			count = 1
+			class = random_non_colonizable
+			orbit_angle = { min = 90 max = 270 }
+			orbit_distance = 0
+			
+			init_effect = {
+				prevent_anomaly = yes
+				clear_deposits = yes
+				set_deposit = d_minerals_3
+				set_planet_flag = starting_deposit
+			}
+		}
+
+		moon = {
+			name = "Laverna"
+			class = "pc_gaia"
+			orbit_distance = 15
+			orbit_angle = 170
+			size = 20
+			has_ring = yes
+			
+			init_effect = {
+				prevent_anomaly = yes			
+				create_species = {
+					name = "Laverna"
+					class = "ASA"
+					portrait = "asari"
+					homeworld = THIS
+					traits = {
+						trait = "mec_trait_asari_age"
+						trait = "mec_trait_asari_gynogenetic"
+						trait = "mec_trait_asari_biotic"
+						trait = "mec_trait_asari_sophisticated"
+						trait = "trait_latent_psionic"
+						trait = "trait_presapient_irradiated"
+					}
+				}
+				last_created_species = { save_global_event_target_as = laverna_species }
+				create_country = {
+					name = "NAME_Laverna_Republic"
+					ignore_initial_colony_error = yes
+					civics = {
+						civic = mec_civic_asari_thessia
+					}
+					authority = auth_democratic
+					species = event_target:laverna_species
+					ethos = {
+						ethic = "ethic_egalitarian"
+						ethic = "ethic_xenophile"
+						ethic = "ethic_spiritualist"
+					}
+					type = primitive
+					effect = {
+						set_graphical_culture = preindustrial_01
+						set_country_flag = stone_age 
+						set_primitive_age = stone_age
+						save_global_event_target_as = laverna_republic
+						add_resource = {
+							minerals = 10000
+							energy = 10000	
+							food = 1000
+							influence = 500
+						}
+					}
+					flag = random
+				}
+				set_owner = event_target:laverna_republic
+				generate_starting_pops = { pops_species_1 = 6 }
+				add_building = building_primitive_capital
+				save_global_event_target_as = laverna_planet
+
+				clear_deposits = yes
+				set_deposit = d_minerals_2
+				set_deposit = d_zro_deposit_3
+				set_planet_flag = starting_deposit
+				set_planet_flag = starting_mining_target
+			}
+		}
+	}
+	
+	neighbor_system = {
+		distance = { min = 10 max = @distance }	
+		initializer = "mec_asr_neighbour_01"
+	}
+	neighbor_system = {
+		distance = { min = 10 max = @distance }
+		initializer = "mec_asr_neighbour_02"
+	}
+	neighbor_system = {
+		distance = { min = 10 max = @distance }
+		initializer = "mec_asr_neighbour_03"
+	}
+	neighbor_system = {
+		distance = { min = 10 max = @distance }
+		initializer = "mec_asr_neighbour_04"
+	}
+}
+
+# Ialessa
+mec_asr_neighbour_01 = {
+	name = "Ialessa"
+	class = sc_g
+	asteroid_belt = {
+		type = rocky_asteroid_belt
+		radius = 55
+	}
+	
+	init_effect = {
+		every_neighbor_system = {
+			set_star_flag = empire_cluster
+			every_neighbor_system = {
+				set_star_flag = empire_cluster
+			}
+		}
+		
+		if = {
+			limit = {
+				NOT = { exists = event_target:mec_asari_ialessa_system }
+			}
+			save_global_event_target_as = mec_asari_ialessa_system
+		}
+	}
+	flags = { mec_asari_ialessa_system custom_system }
+
+	planet = {
+		count = 1
+		class = "pc_g_star"
+		orbit_distance = 0
+		orbit_angle = 1
+		size = 12
+		has_ring = no
+	}
+	
+	planet = {
+		name = "Ilmnos"
+		class = "pc_molten"
+		orbit_distance = 18
+		orbit_angle = 65
+		size = 9
+		has_ring = no
+		entity = "asari_01_planet_molten_ilmnos"
+	}
+
+	planet = {
+		name = "Sanves"
+		class = "pc_tropical"
+		orbit_distance = 20
+		orbit_angle = 170
+		size = 18
+		has_ring = no
+		entity = "asari_01_planet_tropical_sanves"
+		flags = { mec_asari_planet_sanves }
+		
+		init_effect = {
+			prevent_anomaly = yes
+			add_modifier = {
+   				modifier = natural_beauty 
+  				days = -1
+			}
+		}
+	}
+	
+	change_orbit = 18
+	
+	planet = {
+		count = 3
+		class = "pc_asteroid"
+		orbit_distance = 0
+		orbit_angle = { min = 10 max = 190 }
+	}
+	
+	planet = {
+		name = "Zylium"
+		class = "pc_gas_giant"
+		orbit_distance = 22
+		orbit_angle = 35
+		size = 25
+		has_ring = no
+		entity = "asari_01_planet_gas_giant_zylium"
+		
+		init_effect = {
+			prevent_anomaly = yes
+			clear_deposits = yes
+			set_deposit = d_mec_asari_zylium_eezo
+		}
+	}
+	
+	planet = {
+		name = "Trikalon"
+		class = "pc_barren"
+		orbit_distance = 20
+		orbit_angle = 150
+		size = 6
+		has_ring = no
+		entity = "asari_01_planet_barren_trikalon"
+	}
+	
+	planet = {
+		name = "Nossia"
+		class = "pc_barren"
+		orbit_distance = 22
+		orbit_angle = 20
+		size = 25
+		has_ring = no
+		entity = "asari_01_planet_barren_nossia"
+	}
+}
+
+# Orisoni
+mec_asr_neighbour_02 = {	
+	name = "Orisoni"
+	class = sc_g
+	
+	init_effect = {
+		every_neighbor_system = {
+			set_star_flag = empire_cluster
+			every_neighbor_system = {
+				set_star_flag = empire_cluster
+			}
+		}
+		
+		if = {
+			limit = {
+				NOT = { exists = event_target:mec_asari_orisoni_system }
+			}
+			save_global_event_target_as = mec_asari_orisoni_system
+		}
+	}
+	flags = { mec_asari_orisoni_system custom_system }
+
+	planet = {
+		name = "Orisoni"
+		count = 1
+		class = pc_g_star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = 20
+		has_ring = no
+	}
+	
+	planet = {
+		name = "Thissioni"
+		class = "pc_barren"
+		orbit_distance = 23
+		orbit_angle = 60
+		size = 16
+		has_ring = no
+		entity = "asari_01_planet_barren_thissioni"
+	}
+	
+	planet = {
+		name = "Niacal"
+		class = "pc_tropical"
+		orbit_distance = 23
+		orbit_angle = 90
+		size = 22
+		has_ring = no
+		entity = "asari_01_planet_tropical_niacal"
+		flags = { mec_asari_planet_niacal }
+		
+		init_effect = {
+			prevent_anomaly = yes
+			add_deposit = d_mec_asari_niacal_jungles
+			add_anomaly = MEC_ASARI_ANO_NIACAL_01_CAT
+		}
+	}
+	
+	planet = {
+		name = "Orisoni III"
+		class = "pc_barren"
+		orbit_distance = 20
+		orbit_angle = 130
+		size = 14
+		has_ring = no
+		entity = "asari_01_planet_barren_kralla"
+
+		init_effect = {
+			prevent_anomaly = yes
+			clear_deposits = yes
+			add_anomaly = MEC_ASARI_ANO_KRALLA_01_CAT
+		}
+	}
+	
+	planet = {
+		name = "Egalic"
+		class = "pc_gas_giant"
+		orbit_distance = 27
+		orbit_angle = -90
+		size = 32
+		has_ring = yes
+		entity = "asari_01_planet_gas_giant_egalic"
+		
+		init_effect = {
+			prevent_anomaly = yes
+			clear_deposits = yes
+			set_deposit = d_volatile_motes_2
+		}
+	}
+}
+
+
+# Tomaros
+mec_asr_neighbour_03 = {
+	name = "Tomaros"
+	class = sc_g
+	
+	init_effect = {
+		every_neighbor_system = {
+			set_star_flag = empire_cluster
+			every_neighbor_system = {
+				set_star_flag = empire_cluster
+			}
+		}
+		
+		if = {
+			limit = {
+				NOT = { exists = event_target:mec_asari_tomaros_system }
+			}
+			save_global_event_target_as = mec_asari_tomaros_system
+		}
+	}
+	flags = { mec_asari_tomaros_system custom_system }
+
+	planet = {
+		name = "Tomaros"
+		count = 1
+		class = pc_g_star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = 16
+		has_ring = no
+	}
+	
+	planet = {
+		name = "Lusia"
+		class = "pc_continental"
+		orbit_distance = 30
+		orbit_angle = 110
+		size = 18
+		has_ring = no
+		entity = "asari_01_planet_habitable_lusia"
+		flags = { mec_asari_planet_lusia }
+
+	}
+	
+	planet = {
+		name = "Niagolon"
+		class = "pc_gas_giant"
+		orbit_distance = 28
+		orbit_angle = -160
+		size = 30
+		has_ring = yes
+		entity = "asari_01_planet_gas_giant_niagolon"
+	}
+	
+	planet = {
+		name = "Pronoia"
+		class = "pc_gas_giant"
+		orbit_distance = 30
+		orbit_angle = 100
+		size = 24
+		has_ring = no
+		entity = "asari_01_planet_gas_giant_pronoia"
+		
+		moon = {
+			name = "Pronoia I"
+			count = 1
+			class = random_non_colonizable
+			orbit_angle = { min = 90 max = 270 }
+			orbit_distance = 14
+			
+			init_effect = {
+				prevent_anomaly = yes
+				clear_deposits = yes
+				set_deposit = d_minerals_4
+			}
+		}
+	}
+	
+	planet = {
+		name = "Beness"
+		class = "pc_gas_giant"
+		orbit_distance = 33
+		orbit_angle = 100
+		size = 18
+		has_ring = no
+		entity = "asari_01_planet_gas_giant_beness"
+	}
+}
+
+# Vernio
+mec_asr_neighbour_04 = {
+	name = "Vernio"
+	class = sc_f
+	asteroid_belt = {
+		type = rocky_asteroid_belt
+		radius = 90
+	}
+	
+	init_effect = {
+		every_neighbor_system = {
+			set_star_flag = empire_cluster
+			every_neighbor_system = {
+				set_star_flag = empire_cluster
+			}
+		}
+		
+		if = {
+			limit = {
+				NOT = { exists = event_target:mec_asari_vernio_system }
+			}
+			save_global_event_target_as = mec_asari_vernio_system
+		}
+	}
+	flags = { mec_asari_vernio_system custom_system }
+
+	planet = {
+		name = "Vernio"
+		count = 1
+		class = pc_f_star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = 20
+		has_ring = no
+	}
+	
+	planet = {
+		name = "Nauti"
+		class = "pc_barren"
+		orbit_distance = 30
+		orbit_angle = -90
+		size = 18
+		has_ring = no
+		entity = "asari_01_planet_barren_nauti"
+	}
+	
+	planet = {
+		name = "Promavess"
+		class = "pc_barren"
+		orbit_distance = 30
+		orbit_angle = 70
+		size = 14
+		has_ring = no
+		flags = { mec_asari_planet_promavess }
+		entity = "asari_01_planet_barren_promavess"
+	}
+	
+	planet = {
+		name = "Sotera"
+		class = "pc_barren"
+		orbit_distance = 0
+		orbit_angle = 50
+		size = 14
+		has_ring = no
+		flags = { mec_asari_planet_sotera }
+		entity = "asari_01_planet_barren_sotera"
+	}
+	
+	change_orbit = 30
+	
+	planet = {
+		name = "Tritogenith"
+		class = "pc_gas_giant"
+		orbit_distance = 30
+		orbit_angle = 130
+		size = 18
+		has_ring = no
+		entity = "asari_01_planet_gas_giant_tritogenith"
+		
+		init_effect = {
+			prevent_anomaly = yes
+			clear_deposits = yes
+			add_anomaly = MEC_ASARI_ANO_TRITOGENITH_01_CAT
+		}
+		
+		moon = {
+			name = "Tritogenith I"
+			count = 1
+			class = random_non_colonizable
+			orbit_angle = { min = 90 max = 270 }
+			orbit_distance = 15
+		}
+		
+		moon = {
+			name = "Tritogenith II"
+			count = 1
+			class = random_non_colonizable
+			orbit_angle = { min = 90 max = 270 }
+			orbit_distance = 0
+		}
+	}
+	
+	planet = {
+		name = "Polissa"
+		class = "pc_gas_giant"
+		orbit_distance = 45
+		orbit_angle = -135
+		size = 25
+		has_ring = yes
+		entity = "asari_01_planet_gas_giant_polissa"
+		
+		moon = {
+			name = "Polissa I"
+			class = random_non_colonizable
+			orbit_angle = { min = 45 max = 270 }
+			orbit_distance = 18
+			size = { min = 8 max = 14}
+			
+			init_effect = {
+				prevent_anomaly = yes
+				clear_deposits = yes
+			}
+		}
+		
+		moon = {
+			name = "Polissa VI"
+			class = random_non_colonizable
+			orbit_angle = { min = 45 max = 270 }
+			orbit_distance = 0
+			size = { min = 10 max = 15}
+			
+			init_effect = {
+				prevent_anomaly = yes
+				clear_deposits = yes
+			}
+		}
+		
+		moon = {
+			name = "Polissa XI"
+			class = random_non_colonizable
+			orbit_angle = { min = 45 max = 270 }
+			orbit_distance = 5
+			size = { min = 5 max = 10}
+			
+			init_effect = {
+				prevent_anomaly = yes
+				clear_deposits = yes
+			}
+		}
+		
+		moon = {
+			name = "Polissa XV"
+			class = random_non_colonizable
+			orbit_angle = { min = 45 max = 270 }
+			orbit_distance = 0
+			size = { min = 5 max = 12}
+			
+			init_effect = {
+				prevent_anomaly = yes
+				clear_deposits = yes
+				set_deposit = d_minerals_3
+			}
+		}
+		
+		moon = {
+			name = "Polissa XX"
+			class = random_non_colonizable
+			orbit_angle = { min = 45 max = 270 }
+			orbit_distance = 5
+			size = { min = 6 max = 15}
+			
+			init_effect = {
+				prevent_anomaly = yes
+				clear_deposits = yes
+				set_deposit = d_minerals_2
+			}
+		}
+		
+		moon = {
+			name = "Polissa XXVI"
+			class = random_non_colonizable
+			orbit_angle = { min = 45 max = 270 }
+			orbit_distance = 0
+			size = { min = 5 max = 12}
+			
+			init_effect = {
+				prevent_anomaly = yes
+				clear_deposits = yes
+				set_deposit = d_minerals_4
+			}
+		}
+	}
+}
